@@ -1,13 +1,13 @@
 import React from "react";
-import "../Components/TextReveal";
+import TextReveal from "./TextReveal";
+
+// import { motion } from "framer-motion";
 
 const Main = (props) => {
   return (
     <div className="main-container">
       <div className="content">
-        <h3>SNEAKER COMPANY</h3>
-
-        {/* <TextReveal text="SNEAKER COMPANY" /> */}
+        <TextReveal />
 
         <h1 className="product-name">Fall Limited Edition Sneakers</h1>
         <p className="product-desc">

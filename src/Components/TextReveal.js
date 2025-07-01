@@ -1,29 +1,26 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const TextReveal = ({ text }) => {
-  const letters = text.split("");
+const TextReveal = () => {
+  const [resetKey, setResetKey] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setResetKey((prev) => prev + 1);
+    }, 1000); // Rejoue toutes les 1000ms (1 seconde)
+
+    return () => clearInterval(interval);
+  }, []);
   return (
-    <div className="animate">
-      <h3 className="text-2xl font-semibold" key={text}>
-        {letters.map((char, index) => (
-          <motion.span
-            key={`${char}-${index}`}
-            className="inline-block"
-            initial={{ y: 20, rotateX: 90, opacity: 0 }}
-            animate={{ y: 0, rotateX: 0, opacity: 1 }}
-            transition={{
-              delay: index * 0.06,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </h3>
-    </div>
+    <motion.h3
+      key={resetKey} // Ce changement de clé force la recréation du composant
+      style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      transition={{ duration: 2, ease: "easeInOut" }}
+    >
+      SNEAKER COMPANY
+    </motion.h3>
   );
 };
 

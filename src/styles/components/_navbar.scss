@@ -27,6 +27,7 @@
     width: 50%;
     display: grid;
     grid-template-columns: 10% 1fr;
+    align-items: center;
     column-gap: 20%;
 
     .logo {
